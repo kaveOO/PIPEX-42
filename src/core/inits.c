@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 02:40:59 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/03 03:20:22 by kaveo            ###   ########.fr       */
+/*   Updated: 2025/01/03 04:23:07 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "albillie.h"
+#include "pipex.h"
 
 t_args	*init_args_list(int ac, char **av) // ? Function to init args linked list
 {
