@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gletilly <pymousss.dev@gmail.com>          +#+  +:+       +#+        */
+/*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 14:44:15 by gletilly          #+#    #+#             */
-/*   Updated: 2025/01/02 14:46:07 by gletilly         ###   ########.fr       */
+/*   Created: 2024/10/15 00:34:00 by albillie          #+#    #+#             */
+/*   Updated: 2024/12/06 05:11:29 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-#include "includes/gletilly.h"
-#include "includes/albillie.h"
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
+}
 
-
-
-#endif
+/*
+int main()
+{
+	printf("%d\n", ft_isdigit('9'));
+}
+*/

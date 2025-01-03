@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gletilly.h                                         :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gletilly <pymousss.dev@gmail.com>          +#+  +:+       +#+        */
+/*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 14:47:24 by gletilly          #+#    #+#             */
-/*   Updated: 2025/01/02 14:48:18 by gletilly         ###   ########.fr       */
+/*   Created: 2024/10/16 01:41:24 by albillie          #+#    #+#             */
+/*   Updated: 2024/12/06 05:11:29 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GLETILLY_H
-# define GLETILLY_H
+#include "libft.h"
 
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+	{
+		return (c += 32);
+	}
+	return (c);
+}
 
-
-#endif
+/*
+int main()
+{
+	printf("%c\n", ft_tolower('a'));
+}
+*/

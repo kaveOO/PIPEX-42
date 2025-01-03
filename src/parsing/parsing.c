@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   albillie.h                                         :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 14:44:46 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/03 03:12:44 by kaveo            ###   ########.fr       */
+/*   Created: 2025/01/03 01:36:00 by kaveo             #+#    #+#             */
+/*   Updated: 2025/01/03 03:13:07 by kaveo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../includes/albillie.h"
 
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-typedef struct s_args // ? Linked list that contains all the arguments
+// ? **envp est un pointeur sur la liste des variables d'environnement pour aller chercher les commandes.
+int	main(int ac, char **av, char **envp)
 {
-	char			*arg;
-	struct s_args	*next;
-}					t_args;
+	(void) envp;
+	t_args	*args;
 
-t_args	*init_args_list(int ac, char **av);
-t_args	*args_lst_new(char *arg);
-void	args_add_back(t_args **args, t_args *arg);
-void	print_args_list(t_args *args);
+	args = init_args_list(ac, av);
+	print_args_list(args);
+}
 
-#endif
+

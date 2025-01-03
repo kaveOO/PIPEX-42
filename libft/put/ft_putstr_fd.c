@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 01:36:00 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/03 01:38:52 by kaveo            ###   ########.fr       */
+/*   Created: 2024/10/20 07:40:05 by albillie          #+#    #+#             */
+/*   Updated: 2024/12/06 05:11:30 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-// ? **envp est un pointeur sur la liste des variables d'environnement pour aller chercher les commandes.
-int	main(int argc, char **argv, char **envp)
+void	ft_putstr_fd(char *s, int fd)
 {
+	size_t	i;
 
-
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
 }
+/* int main()
+{
+	char *str = "TEST";
+
+	ft_putstr_fd(str, 2);
+} */
