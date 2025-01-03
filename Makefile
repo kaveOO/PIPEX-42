@@ -5,7 +5,8 @@ CFLAGS	=	-Wall -Wextra -Werror -g $(INCLUDE)
 INCLUDE	=	-I includes -I libft
 RM		=	rm -f
 
-LIB		= 	libft/libft.a
+LIB		= 	libft
+LIBFT	=	$(LIB)/libft.a
 
 SRC		=	src/core/inits.c		\
 			src/core/main.c			\
@@ -15,8 +16,11 @@ SRC		=	src/core/inits.c		\
 
 OBJ 		= $(SRC:.c=.o)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIB)
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+
+$(LIBFT): $(LIB)
+		$(MAKE) -C $(LIB)
 
 all: $(NAME)
 
@@ -29,7 +33,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) -r $(LIB)
+	$(RM) $(LIBFT)
 
 re: fclean all
 
