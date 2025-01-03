@@ -10,6 +10,7 @@ LIB		= 	libft/libft.a
 SRC		=	src/core/inits.c		\
 			src/parsing/parsing.c	\
 			src/utils/lists_utils.c	\
+			src/handling/handling.c	\
 
 
 OBJ 		= $(SRC:.c=.o)

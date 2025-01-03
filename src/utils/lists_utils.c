@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lists_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 02:46:49 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/03 03:25:06 by kaveo            ###   ########.fr       */
+/*   Updated: 2025/01/03 04:07:56 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,17 @@ void	print_args_list(t_args *args)
 	{
 		ft_printf("%s\n", args->arg);
 		args = args->next;
+	}
+}
+
+void	free_args_list(t_args *args)
+{
+	t_args	*temp;
+
+	while (args)
+	{
+		temp = args;
+		args = args->next;
+		free(temp);
 	}
 }
