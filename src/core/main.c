@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 04:24:05 by albillie          #+#    #+#             */
-/*   Updated: 2025/01/03 04:24:34 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:48:39 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 // ? **envp est un pointeur sur la liste des variables d'environnement pour aller chercher les commandes.
 int	main(int ac, char **av, char **envp)
 {
-	(void) envp;
-	t_args	*args;
+	char	***array;
 
-	args = init_args_list(ac, av);
-	print_args_list(args);
-	exit_handler(args);
+	array = fill_parsing_array(ac, av);
+
 }

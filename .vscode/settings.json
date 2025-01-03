@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"*.embeddedhtml": "html",
+		"pipex.h": "c",
+		"stdlib.h": "c",
+		"libft.h": "c"
+	}
+}
