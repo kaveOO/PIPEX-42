@@ -6,7 +6,7 @@
 /*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 01:36:00 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/04 03:36:58 by kaveo            ###   ########.fr       */
+/*   Updated: 2025/01/04 04:29:04 by kaveo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 
 bool	check_args(int ac, char **av, char **envp)
 {
-	char	*outfile[] = {find_path("touch", envp), av[ac - 1], NULL};
+	char **touch_cmd;
 
 	if (open(av[1], O_RDONLY) == -1)
 		return (perror(av[1]), false);
-	ft_printf("%s\n", av[ac - 1]);
+	touch_cmd = malloc(sizeof(char **) * 3);
+	if (!touch_cmd)
+		return (perror("touch command"), false);
+	touch_cmd[0] = find_path("touch", envp);
+	touch_cmd[1] = av[ac - 1];
+	touch_cmd[2] = NULL;
 	if (open(av[ac - 1], O_WRONLY) == -1)
-		execve(find_path("touch", envp), outfile, envp);
+	{
+		execve(find_path("touch", envp), touch_cmd, envp);
+	}
+	free_array(touch_cmd, 1);
 	return (true);
 }
 
@@ -32,7 +40,7 @@ char	*find_path(char *cmd, char **envp)
 	int		i;
 
 	i = 0;
-	while (strncmp(envp[i], "PATH", 4))
+	while (ft_strncmp(envp[i], "PATH", 4))
 		envp++;
 	paths = ft_split(envp[i] + 5, ':');
 	while (paths[i])
