@@ -4,6 +4,8 @@
 		"pipex.h": "c",
 		"stdlib.h": "c",
 		"libft.h": "c",
-		"cstdlib": "c"
+		"cstdlib": "c",
+		"wait.h": "c",
+		"locale": "c"
 	}
 }

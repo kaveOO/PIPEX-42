@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 01:36:00 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/04 08:03:27 by kaveo            ###   ########.fr       */
+/*   Updated: 2025/01/04 15:17:39 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	check_args(int ac, char **av)
 {
+	(void)av;
 	if (ac <= 4)
 		format();
-	if (open(av[1], O_RDONLY) == -1)
-		(perror(av[1]), exit(1));
+	// if (open(av[1], O_RDONLY) == -1)
+	// 	(perror(av[1]), exit(1));
 }
 
 char	*find_path(char *cmd, char **envp)
