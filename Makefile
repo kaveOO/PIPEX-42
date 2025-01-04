@@ -8,11 +8,10 @@ RM		=	rm -f
 LIB		= 	libft
 LIBFT	=	$(LIB)/libft.a
 
-SRC		=	src/core/inits.c		\
-			src/core/main.c			\
+SRC		=	src/core/main.c			\
 			src/parsing/parsing.c	\
-			src/utils/lists_utils.c	\
 			src/handling/handling.c	\
+			src/utils/array_utils.c	\
 
 OBJ 		= $(SRC:.c=.o)
 

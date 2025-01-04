@@ -3,31 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   array_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 02:46:49 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/03 11:05:56 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/04 03:19:27 by kaveo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**fill_parsing_array(int ac, char **av)
+void	free_array(char **array, int i)
 {
-	char	***array;
-	int	i;
-
-	array = malloc(sizeof(char ***) * ac);
-	if (!array)
-		return (perror("array"), NULL);
-	i = 1;
-	while (i < ac)
-	{
-		/* code */
-	}
-
-
-
+	while (i--)
+		free(array[i]);
+	free(array);
 }
 
 // tbl = {
