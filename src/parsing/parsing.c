@@ -6,21 +6,43 @@
 /*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 01:36:00 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/04 05:15:01 by kaveo            ###   ########.fr       */
+/*   Updated: 2025/01/04 08:03:27 by kaveo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/albillie.h"
+#include "pipex.h"
 
-// ? **envp est un pointeur sur la liste des variables d'environnement pour aller chercher les commandes.
-int	main(int ac, char **av, char **envp)
+void	check_args(int ac, char **av)
 {
-	(void) envp;
-	t_args	*args;
-
-	args = init_args_list(ac, av);
-	print_args_list(args);
-	exit_handler(args);
+	if (ac <= 4)
+		format();
+	if (open(av[1], O_RDONLY) == -1)
+		(perror(av[1]), exit(1));
 }
 
+char	*find_path(char *cmd, char **envp)
+{
+	char	**paths;
+	char	*tmp_path;
+	char	*path;
+	int		i;
 
+	i = 0;
+	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5))
+		i++;
+	if (!envp[i])
+		return (NULL);
+	paths = ft_split(envp[i] + 5, ':');
+	i = 0;
+	while (paths[i])
+	{
+		tmp_path = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(tmp_path, cmd);
+		free(tmp_path);
+		if (!access(path, F_OK | X_OK))
+			return (free_array(paths), path);
+		free(path);
+		i++;
+	}
+	return (0);
+}

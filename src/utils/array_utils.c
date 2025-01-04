@@ -6,44 +6,21 @@
 /*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 02:46:49 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/04 05:11:53 by kaveo            ###   ########.fr       */
+/*   Updated: 2025/01/04 08:04:06 by kaveo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static void    free_array(char **array)
+void	free_array(char **array)
 {
-    int    i;
+	int	i;
 
-    i = 0;
-    while (array[i])
-    {
-        free(array[i]);
-        i++;
-    }
-    free(array);
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
-
-// tbl = {
-// 	[1] = {
-// 		[1] = "tts"
-// 		[2] = "tts2"
-// 	}
-// 	[2] = {
-// 		[1] = "tts"
-// 		[2] = "tts2"
-// 	}
-// 	[3] = {
-// 		[1] = "tts"
-// 		[2] = "tts2"
-// 	}
-// 	[4] = {
-// 		[1] = "tts"
-// 		[2] = "tts2"
-// 	}
-// 	[5] = {
-// 		[1] = "tts"
-// 		[2] = "tts2"
-// 	}
-// }

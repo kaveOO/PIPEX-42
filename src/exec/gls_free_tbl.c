@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   gls_free_tbl.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 05:27:37 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/04 07:12:12 by kaveo            ###   ########.fr       */
+/*   Created: 2025/01/04 03:38:24 by gletilly          #+#    #+#             */
+/*   Updated: 2025/01/04 05:23:01 by kaveo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int    main(int ac, char **av, char **envp)
+void	gls_free_tbl(char **tbl)
 {
-    int    status;
-    int    i;
+	int	i;
 
-	check_args(ac, av);
-    if (!setup_files(av[1], av[ac - 1]))
-        return (1);
-    if (execute_pipeline(av + 2, ac - 3, envp))
-        return (1);
-    i = 0;
-    while (i < ac - 3)
-    {
-        wait(&status);
-        i++;
-    }
-    return (0);
+	if (tbl == NULL)
+		return ;
+	i = 0;
+	while (tbl[i] != NULL)
+	{
+		free(tbl[i]);
+		i++;
+	}
+	free(tbl);
 }

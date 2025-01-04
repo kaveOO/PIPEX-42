@@ -8,18 +8,14 @@ RM		=	rm -f
 LIB		= 	libft
 LIBFT	=	$(LIB)/libft.a
 
-<<<<<<< HEAD
-SRC		=	src/core/inits.c		\
-			src/core/main.c			\
-=======
 SRC		=	src/core/main.c			\
->>>>>>> albillie
 			src/parsing/parsing.c	\
 			src/handling/handling.c	\
-<<<<<<< HEAD
-=======
 			src/utils/array_utils.c	\
->>>>>>> albillie
+			src/exec/exec_child.c	\
+			src/exec/exec_files.c	\
+			src/exec/exec_pipe.c	\
+			src/exec/gls_free_tbl.c	\
 
 OBJ 		= $(SRC:.c=.o)
 
