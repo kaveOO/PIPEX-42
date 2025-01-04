@@ -38,10 +38,14 @@ SOURCES = 							\
 	convert/ft_atoi.c 				\
 	convert/ft_atol.c 				\
 	gnl/get_next_line.c 			\
-	printf/ft_printf_hex.c 			\
-	printf/ft_printf_ptr.c 			\
-	printf/ft_printf_utils.c 		\
-	printf/ft_printf.c 				\
+	printf/ft_printf/ft_printf_hex.c 			\
+	printf/ft_printf/ft_printf_ptr.c 			\
+	printf/ft_printf/ft_printf_utils.c 		\
+	printf/ft_printf/ft_printf.c 				\
+	printf/ft_printf_fd/ft_printf_fd_hex.c 			\
+	printf/ft_printf_fd/ft_printf_fd_ptr.c 			\
+	printf/ft_printf_fd/ft_printf_fd_utils.c 		\
+	printf/ft_printf_fd/ft_printf_fd.c 				\
 	check/check_extension.c 		\
 	lists/ft_lstnew_bonus.c			\
 	lists/ft_lstadd_front_bonus.c	\

@@ -5,18 +5,29 @@ CFLAGS	=	-Wall -Wextra -Werror -g $(INCLUDE)
 INCLUDE	=	-I includes -I libft
 RM		=	rm -f
 
-LIB		= 	libft/libft.a
+LIB		= 	libft
+LIBFT	=	$(LIB)/libft.a
 
+<<<<<<< HEAD
 SRC		=	src/core/inits.c		\
 			src/core/main.c			\
+=======
+SRC		=	src/core/main.c			\
+>>>>>>> albillie
 			src/parsing/parsing.c	\
-			src/utils/lists_utils.c	\
 			src/handling/handling.c	\
+<<<<<<< HEAD
+=======
+			src/utils/array_utils.c	\
+>>>>>>> albillie
 
 OBJ 		= $(SRC:.c=.o)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIB)
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+
+$(LIBFT): $(LIB)
+		$(MAKE) -C $(LIB)
 
 all: $(NAME)
 
@@ -29,7 +40,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) -r $(LIB)
+	$(RM) $(LIBFT)
 
 re: fclean all
 
