@@ -6,7 +6,7 @@
 /*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 01:36:00 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/04 04:29:04 by kaveo            ###   ########.fr       */
+/*   Updated: 2025/01/04 05:13:24 by kaveo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,42 @@ bool	check_args(int ac, char **av, char **envp)
 	free_array(touch_cmd, 1);
 	return (true);
 }
-
-char	*find_path(char *cmd, char **envp)
+static void    free_array(char **array)
 {
-	char	**paths;
-	char	*tmp_path;
-	char	*path;
-	int		i;
+    int    i;
 
-	i = 0;
-	while (ft_strncmp(envp[i], "PATH", 4))
-		envp++;
-	paths = ft_split(envp[i] + 5, ':');
-	while (paths[i])
-	{
-		tmp_path = ft_strjoin(paths[i], "/");
-		path = ft_strjoin(tmp_path, cmd);
-		free(tmp_path);
-		if (access(path, F_OK) == 0)
-		{
-			free_array(paths, i);
-			return (path);
-		}
-		free(path);
-		i++;
-	}
-	free_array(paths, i);
-	return (0);
+    i = 0;
+    while (array[i])
+    {
+        free(array[i]);
+        i++;
+    }
+    free(array);
+}
+
+char    *find_path(char *cmd, char **envp)
+{
+    char    **paths;
+    char    *tmp_path;
+    char    *path;
+    int        i;
+
+    i = 0;
+    while (envp[i] && ft_strncmp(envp[i], "PATH=", 5))
+        i++;
+    if (!envp[i])
+        return (NULL);
+    paths = ft_split(envp[i] + 5, ':');
+    i = 0;
+    while (paths[i])
+    {
+        tmp_path = ft_strjoin(paths[i], "/");
+        path = ft_strjoin(tmp_path, cmd);
+        free(tmp_path);
+        if (!access(path, F_OK | X_OK))
+            return (free_array(paths), path);
+        free(path);
+        i++;
+    }
+    return (free_array(paths), NULL);
 }

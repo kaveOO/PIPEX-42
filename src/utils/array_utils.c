@@ -6,17 +6,23 @@
 /*   By: kaveo <kaveo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 02:46:49 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/04 03:19:27 by kaveo            ###   ########.fr       */
+/*   Updated: 2025/01/04 05:11:53 by kaveo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	free_array(char **array, int i)
+static void    free_array(char **array)
 {
-	while (i--)
-		free(array[i]);
-	free(array);
+    int    i;
+
+    i = 0;
+    while (array[i])
+    {
+        free(array[i]);
+        i++;
+    }
+    free(array);
 }
 
 // tbl = {
