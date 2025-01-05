@@ -8,14 +8,8 @@ RM		=	rm -f
 LIB		= 	libft
 LIBFT	=	$(LIB)/libft.a
 
-SRC		=	src/core/main.c			\
-			src/parsing/parsing.c	\
-			src/handling/handling.c	\
-			src/utils/array_utils.c	\
-			src/exec/exec_child.c	\
-			src/exec/exec_files.c	\
-			src/exec/exec_pipe.c	\
-			src/exec/gls_free_tbl.c	\
+SRC		=	src/core/pipex.c			\
+			src/utils/pipex_utils.c
 
 OBJ 		= $(SRC:.c=.o)
 

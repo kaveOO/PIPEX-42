@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 14:44:46 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/04 20:06:32 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:29:51 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	setup_files(char *infile, char *outfile);
 int		execute_pipeline(char **cmds, int cmd_count, char **envp);
 void	free_array(char **array);
 void	gls_free_tbl(char **tbl);
-void	handle_child_process(int fd_in, int fd_out, char *cmd, char **envp);
+void 	handle_child_process(char **envp, char **av, int *fd);
 void	format();
 int		open_outfile(char *file);
 void 	handle_here_doc(char *limiter);

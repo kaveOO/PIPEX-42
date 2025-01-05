@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 01:36:00 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/04 15:17:39 by albillie         ###   ########.fr       */
+/*   Created: 2025/01/05 15:01:16 by albillie          #+#    #+#             */
+/*   Updated: 2025/01/05 15:52:11 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	check_args(int ac, char **av)
+void	format(void)
 {
-	(void)av;
-	if (ac <= 4)
-		format();
-	// if (open(av[1], O_RDONLY) == -1)
-	// 	(perror(av[1]), exit(1));
+	ft_printf("Format -> ./pipex <file1> <cmd1> <cmd2> <file2>\n");
+	exit(1);
+}
+
+void	free_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
 
 char	*find_path(char *cmd, char **envp)
@@ -45,5 +55,7 @@ char	*find_path(char *cmd, char **envp)
 		free(path);
 		i++;
 	}
+	free_array(paths);
 	return (0);
 }
+
