@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 14:44:46 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/05 17:29:51 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/05 19:26:45 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	gls_free_tbl(char **tbl);
 void 	handle_child_process(char **envp, char **av, int *fd);
 void	format();
 int		open_outfile(char *file);
-void 	handle_here_doc(char *limiter);
+void	handle_parent_process(char **envp, int ac, char **av, int *fd);
 
 #endif

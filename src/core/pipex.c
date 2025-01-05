@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 05:27:37 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/05 17:37:58 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/05 19:54:02 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,28 @@ void exec(char **envp, char *av)
 
 void handle_child_process(char **envp, char **av, int *fd)
 {
-	int infile = open(av[1], O_RDONLY);
-	if (fd < 0)
+	int	infile;
+
+	infile = open(av[1], O_RDONLY);
+	if (infile < 0)
 		perror(av[1]), exit(1);
 	dup2(fd[1], STDOUT_FILENO);
 	dup2(infile, STDIN_FILENO);
+	close(fd[0]);
 	exec(envp, av[2]);
 }
 
-void	handle_parent_process(char **envp, char **av, int fd)
+void	handle_parent_process(char **envp, int ac, char **av, int *fd)
 {
+	int	outfile;
 
-
-
+	outfile = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (outfile < 0)
+		perror(av[ac - 1]), exit(1);
+	dup2(fd[0], STDIN_FILENO);
+	dup2(outfile, STDOUT_FILENO);
+	close(fd[1]);
+	exec(envp, av[3]);
 }
 
 int main(int ac, char **av, char **envp)
@@ -66,5 +75,6 @@ int main(int ac, char **av, char **envp)
 		perror("fork");
 	if (pid == 0)
 		handle_child_process(envp, av, fd);
-	// ? handle the parent process
+	waitpid(pid, NULL, 0);
+	handle_parent_process(envp, ac, av, fd);
 }
