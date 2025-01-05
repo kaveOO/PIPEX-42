@@ -1,0 +1,9 @@
+total 40
+drwxr-xr-x  2 albillie 2024_le-havre    21 Jan  5 15:00 includes
+-rwxrwxrwx  1 albillie 2024_le-havre    62 Jan  5 17:02 infile
+drwxr-xr-x 13 albillie 2024_le-havre   187 Jan  5 15:00 libft
+-rw-r--r--  1 albillie 2024_le-havre   527 Jan  5 15:28 Makefile
+-rwxr-xr-x  1 albillie 2024_le-havre     0 Jan  5 21:24 outfil
+-rw-r--r--  1 albillie 2024_le-havre   450 Jan  5 21:24 outfile
+-rwxr-xr-x  1 albillie 2024_le-havre 25104 Jan  5 21:24 pipex
+drwxr-xr-x  4 albillie 2024_le-havre    31 Jan  5 15:02 src
