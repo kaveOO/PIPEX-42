@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 05:27:37 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/06 16:48:51 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/06 22:40:34 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	exec(char **envp, char *av)
 		free(command);
 		exit(1);
 	}
-	execve(path, command, envp);
+	if (execve(path, command, envp) == -1)
+		perror("execve");
 }
 
 pid_t	handle_child_process(char **envp, char **av, int *fd)
@@ -68,6 +69,7 @@ pid_t	handle_child_process(char **envp, char **av, int *fd)
 		if (infile < 0)
 		{
 			perror(av[1]);
+			ft_printf_fd(2,"caca");
 			exit(1);
 		}
 		dup2(fd[1], STDOUT_FILENO);
@@ -108,6 +110,7 @@ int	main(int ac, char **av, char **envp)
 {
 	int		fd[2];
 	pid_t	pid[2];
+	int		exit_status;
 	int		i;
 
 	if (ac < 5)
@@ -119,7 +122,10 @@ int	main(int ac, char **av, char **envp)
 	i = 0;
 	while (i < 2)
 	{
-		waitpid(pid[i], NULL, 0);
+		waitpid(pid[i], &exit_status, 0);
 		i++;
 	}
+	if (WIFEXITED(exit_status) && WEXITSTATUS(exit_status))
+		return (WEXITSTATUS(exit_status));
+	return (EXIT_SUCCESS);
 }
