@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:23:35 by albillie          #+#    #+#             */
-/*   Updated: 2025/01/06 02:06:49 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/06 02:21:41 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ void	handle_here_doc(int *fd, char **av)
 	while (true)
 	{
 		line = get_next_line(0);
+		if (!line)
+			return ;
 		if (ft_strncmp(line, av[2], ft_strlen(av[2])) == 0)
 		{
 			free(line);
+			get_next_line(-1);
 			return ;
 		}
 		free(line);
