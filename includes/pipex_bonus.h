@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 14:44:46 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/06 01:34:00 by albillie         ###   ########.fr       */
+/*   Created: 2025/01/06 01:33:40 by albillie          #+#    #+#             */
+/*   Updated: 2025/01/06 01:40:28 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
-# include "libft.h"
 # include <unistd.h>
-# include <stdlib.h>
 # include <stdio.h>
 # include <sys/wait.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include "libft.h"
 
-char	*find_path(char *cmd, char **envp);
-void	free_array(char **array);
-void	format();
-pid_t	handle_parent_process(char **envp, int ac, char **av, int *fd);
-pid_t 	handle_child_process(char **envp, char **av, int *fd);
+void	format_bonus(void);
 
 #endif

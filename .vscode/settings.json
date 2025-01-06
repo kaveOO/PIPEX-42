@@ -6,6 +6,7 @@
 		"libft.h": "c",
 		"cstdlib": "c",
 		"wait.h": "c",
-		"locale": "c"
+		"locale": "c",
+		"pipex_bonus.h": "c"
 	}
 }
