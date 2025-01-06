@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:23:35 by albillie          #+#    #+#             */
-/*   Updated: 2025/01/06 02:21:41 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:03:27 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 void	handle_here_doc(int *fd, char **av)
 {
 	char	*line;
+	int		temp;
 
+	temp = open("temp", O_RDWR | O_CREAT);
+	if (temp < 0)
+		perror("temp");
 	if (pipe(fd) == -1)
 		perror("pipe");
 	while (true)
@@ -29,11 +33,12 @@ void	handle_here_doc(int *fd, char **av)
 			get_next_line(-1);
 			return ;
 		}
+		ft_printf_fd(temp, line);
 		free(line);
 	}
 }
 
-int main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
 	int	fd[2];
 
@@ -47,7 +52,6 @@ int main(int ac, char **av, char **envp)
 	}
 	else
 	{
-
 
 	}
 }

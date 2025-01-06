@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 14:44:46 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/06 01:34:00 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:51:46 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 char	*find_path(char *cmd, char **envp);
 void	free_array(char **array);
-void	format();
+void	format(void);
 pid_t	handle_parent_process(char **envp, int ac, char **av, int *fd);
-pid_t 	handle_child_process(char **envp, char **av, int *fd);
+pid_t	handle_child_process(char **envp, char **av, int *fd);
 
 #endif
