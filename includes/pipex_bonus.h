@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:33:40 by albillie          #+#    #+#             */
-/*   Updated: 2025/01/06 01:40:28 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:11:36 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # include <stdlib.h>
 # include "libft.h"
 
+typedef struct	s_pipex
+{
+	char		*infile;
+	char		*outfile;
+	int			cmd_count;
+	pid_t		pid[];
+}				t_pipex;
+
 void	format_bonus(void);
+void	handle_here_doc(char **av, t_pipex *pipex);
+t_pipex	*init_pipex_struct();
 
 #endif

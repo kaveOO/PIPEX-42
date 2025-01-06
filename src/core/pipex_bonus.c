@@ -6,13 +6,13 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:23:35 by albillie          #+#    #+#             */
-/*   Updated: 2025/01/06 15:03:27 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/06 20:45:33 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void	handle_here_doc(int *fd, char **av)
+void	handle_here_doc(char **av, t_pipex *pipex)
 {
 	char	*line;
 	int		temp;
@@ -20,8 +20,7 @@ void	handle_here_doc(int *fd, char **av)
 	temp = open("temp", O_RDWR | O_CREAT);
 	if (temp < 0)
 		perror("temp");
-	if (pipe(fd) == -1)
-		perror("pipe");
+	pipex->infile = "temp";
 	while (true)
 	{
 		line = get_next_line(0);
@@ -40,18 +39,34 @@ void	handle_here_doc(int *fd, char **av)
 
 int	main(int ac, char **av, char **envp)
 {
-	int	fd[2];
+	t_pipex	*pipex;
+	int		fd[2];
 
-	(void) envp;
+	if (pipe(fd) == -1)
+		perror("pipe");
 	ac -= 1;
-	if (ft_strncmp(av[1], "here_doc", 8) == 0)
+	pipex = init_pipex_struct();
+	if (ac >= 5)
 	{
-		if (ac < 5)
-			format_bonus();
-		handle_here_doc(fd, av);
+		if (ft_strncmp(av[1], "here_doc", 8) == 0)
+		{
+			handle_here_doc(av, pipex);
+			pipex->cmd_count = ac - 3;
+		}
 	}
-	else
-	{
+	free(pipex);
+	format_bonus();
+}
 
-	}
+t_pipex	*init_pipex_struct()
+{
+	t_pipex	*pipex;
+
+	pipex = malloc(sizeof(t_pipex));
+	if (!pipex)
+		return (NULL);
+	pipex->cmd_count = 0;
+	pipex->infile = NULL;
+	pipex->outfile = NULL;
+	return (pipex);
 }
