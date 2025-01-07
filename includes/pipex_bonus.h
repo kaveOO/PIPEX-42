@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:33:40 by albillie          #+#    #+#             */
-/*   Updated: 2025/01/06 19:11:36 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:24:58 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@
 
 typedef struct	s_pipex
 {
-	char		*infile;
-	char		*outfile;
+	int			infile;
+	int			outfile;
 	int			cmd_count;
 	pid_t		pid[];
 }				t_pipex;
 
 void	format_bonus(void);
-void	handle_here_doc(char **av, t_pipex *pipex);
+int		handle_here_doc(char *limiter);
 t_pipex	*init_pipex_struct();
+void	error(char *error);
 
 #endif

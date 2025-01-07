@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 05:27:37 by kaveo             #+#    #+#             */
-/*   Updated: 2025/01/06 22:40:34 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/07 01:11:31 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ pid_t	handle_child_process(char **envp, char **av, int *fd)
 		if (infile < 0)
 		{
 			perror(av[1]);
-			ft_printf_fd(2,"caca");
 			exit(1);
 		}
 		dup2(fd[1], STDOUT_FILENO);

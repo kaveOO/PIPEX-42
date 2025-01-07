@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:33:10 by albillie          #+#    #+#             */
-/*   Updated: 2025/01/06 23:39:26 by albillie         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:24:49 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,10 @@ char	*find_path(char *cmd, char **envp)
 	}
 	free_array(paths);
 	return (0);
+}
+
+void	error(char *error)
+{
+	perror(error);
+	exit(EXIT_FAILURE);
 }
